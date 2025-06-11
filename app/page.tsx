@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import { stripe } from "@/lib/stripe";
-import { Carousel } from "@/components/ui/carousel";
+import { Carousel } from "@/components/general/carousel";
 
 const Home = async () => {
   const products = await stripe.products.list({
@@ -17,7 +17,7 @@ const Home = async () => {
         <div className="mx-auto grid grid-cols-1 items-center justify-items-center gap-8 px-8 sm:px-16 md:grid-cols-2">
           <div className="max-w-md space-y-4">
             <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-              Welcome to Click & Ship
+              Welcome to Easy Commerce
             </h2>
             <p className="text-neutral-600">
               Discover the latest products at the best prices.
@@ -45,20 +45,7 @@ const Home = async () => {
         </div>
       </section>
       <section className="py-8">
-        <Carousel>
-          {products.data.map((product) => (
-            <div key={product.id}>
-              {/* Render your product details here, e.g. image, name, price */}
-              <Image
-                alt={product.name}
-                src={product.images[0]}
-                width={200}
-                height={200}
-              />
-              <h3>{product.name}</h3>
-            </div>
-          ))}
-        </Carousel>
+        <Carousel products={products.data} />
       </section>
     </div>
   );

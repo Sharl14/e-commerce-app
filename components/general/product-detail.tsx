@@ -63,6 +63,7 @@ export const ProductDetail = ({ product }: ProductDetailProps) => {
         )}
 
         <div className="flex items-center space-x-4 mt-4">
+          <Button onClick={handleAddItem}>Add to Cart</Button>
           <Button variant="outline" onClick={handleRemoveItem}>
             –
           </Button>
